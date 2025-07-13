@@ -110,7 +110,7 @@ Edit
 
 ## Contact
 
-For questions or collaboration, reach out at [your.email@example.com].
+For questions or collaboration, reach out at kolekaravdhoot231@gmail.com.
 
 ---
 

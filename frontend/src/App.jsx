@@ -10,9 +10,11 @@ function App() {
   const handleSubmit = async () => {
     try {
 
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+      // const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+      const API_BASE_URL = "http://13.203.226.14:5000";
 
-      const res = await fetch(`${backendUrl}/analyze`, {
+
+      const res = await fetch(`${API_BASE_URL}/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -11,10 +11,10 @@ function App() {
     try {
 
       // const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
-      const API_BASE_URL = "http://13.203.226.14:5000";
+      // const API_BASE_URL = "http://13.203.226.14:5000";
 
-
-      const res = await fetch(`${API_BASE_URL}/analyze`, {
+      // API_BASE_URL
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

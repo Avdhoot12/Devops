@@ -1,7 +1,9 @@
 - name: Devops Project Setup on EC2
-  hosts: web
+  # hosts: web
+  hosts: local
   become: true
-
+  become_method: sudo
+  become_user: root
   tasks:
     - name: Update APT cache
       apt:

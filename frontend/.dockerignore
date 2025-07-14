@@ -1,0 +1,25 @@
+# Ignore node dependencies
+node_modules/
+
+# Build output (don’t copy prebuilt stuff)
+dist/
+
+# Logs and system clutter
+*.log
+npm-debug.log*
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# IDE/editor stuff
+.vscode/
+*.swp
+*.swo
+
+# Env files (if any)
+.env

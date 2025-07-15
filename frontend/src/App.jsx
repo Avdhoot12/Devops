@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div className="App" style={{ padding: '2rem', fontFamily: 'Arial' }}>
-      <h1>🔥 Sentiment Classifier By Om</h1>
+      <h1>🔥 Sentiment Classifier</h1>
       <textarea
         placeholder="Type your text here..."
         value={text}

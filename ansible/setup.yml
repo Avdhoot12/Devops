@@ -1,24 +1,31 @@
-- name: Devops Project Setup on EC2
+- name: DevOps Project Setup on EC2
   hosts: web
-  # hosts: local
   become: true
   become_method: sudo
   become_user: root
+
   tasks:
     - name: Update APT cache
       apt:
         update_cache: yes
 
-    - name: Install Dependencies
+    - name: Install Docker and Docker Compose
       apt:
-        name: ['docker.io', 'docker-compose']
+        name:
+          - docker.io
+          - docker-compose
         state: present
 
-    - name: Ensure Docker is started
+    - name: Ensure Docker is started and enabled
       service:
         name: docker
         state: started
         enabled: true
+
+    - name: Delete devops-ML-app directory if it exists
+      file:
+        path: /home/ubuntu/devops-ML-app
+        state: absent
 
     - name: Clone your app repository
       git:
@@ -32,13 +39,29 @@
         return_content: yes
       register: public_ip
 
-    - name: update fronntend .env file with backend ip
+    - name: Update frontend .env file with backend IP
       copy:
         dest: /home/ubuntu/devops-ML-app/frontend/.env
         content: |
           VITE_API_BASE_URL=http://{{ public_ip.content | trim }}:5000
 
-    - name: Run the app with docker compose
+    - name: Stop running containers (if any)
+      shell: docker-compose down || true
+      args:
+        chdir: /home/ubuntu/devops-ML-app
+        warn: false
+
+    - name: Delete all Docker images
+      shell: docker rmi -f $(docker images -q) || true
+      args:
+        warn: false
+
+    - name: Rebuild Docker images
+      command: docker-compose build
+      args:
+        chdir: /home/ubuntu/devops-ML-app
+
+    - name: Run the app with Docker Compose
       command: docker-compose up -d
       args:
         chdir: /home/ubuntu/devops-ML-app

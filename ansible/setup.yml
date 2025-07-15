@@ -49,12 +49,12 @@
       shell: docker-compose down || true
       args:
         chdir: /home/ubuntu/devops-ML-app
-        warn: false
+
 
     - name: Delete all Docker images
       shell: docker rmi -f $(docker images -q) || true
       args:
-        warn: false
+  
 
     - name: Rebuild Docker images
       command: docker-compose build

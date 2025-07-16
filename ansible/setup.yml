@@ -22,6 +22,27 @@
         state: started
         enabled: true
 
+    # - name: Stop running containers (if any)
+    #   shell: docker-compose down || true
+    #   args:
+    #     chdir: /home/ubuntu/devops-ML-app
+
+    - name: Remove all containers (running or stopped)
+      shell: docker rm -f $(docker ps -aq) || true
+      args:
+        executable: /bin/bash
+        
+
+    - name: Delete all Docker images
+      shell: docker rmi -f $(docker images -aq) || true
+      args:
+        executable: /bin/bash
+
+    - name: Prune Docker system
+      command: docker system prune -af --volumes || true
+      args:
+        executable: /bin/bash    
+
     - name: Delete devops-ML-app directory if it exists
       file:
         path: /home/ubuntu/devops-ML-app
@@ -44,16 +65,6 @@
         dest: /home/ubuntu/devops-ML-app/frontend/.env
         content: |
           VITE_API_BASE_URL=http://{{ public_ip.content | trim }}:5000
-
-    - name: Stop running containers (if any)
-      shell: docker-compose down || true
-      args:
-        chdir: /home/ubuntu/devops-ML-app
-        
-
-    - name: Delete all Docker images
-      shell: docker rmi -f $(docker images -q) || true
-      args:
         
 
     - name: Rebuild Docker images

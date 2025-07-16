@@ -20,8 +20,8 @@ services:
       - "5173:80"
     depends_on:
       - backend
-    environment:
-      - VITE_BACKEND_URL=http://backend:5000
+    # environment:
+    #   - VITE_BACKEND_URL=http://backend:5000
     networks:
       - app-network
 

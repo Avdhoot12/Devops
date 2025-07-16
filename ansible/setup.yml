@@ -39,7 +39,7 @@
         executable: /bin/bash
 
     - name: Prune Docker system
-      command: docker system prune -af --volumes || true
+      shell: docker system prune -af --volumes || true
       args:
         executable: /bin/bash    
 

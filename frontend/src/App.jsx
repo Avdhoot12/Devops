@@ -14,6 +14,7 @@ function App() {
       // const API_BASE_URL = "http://13.203.226.14:5000";
 
       // API_BASE_URL
+      // const res = await fetch(`${backendUrl}/analyze`, {
       const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/analyze`, {
         method: 'POST',
         headers: {

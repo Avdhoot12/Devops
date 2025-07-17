@@ -95,3 +95,38 @@ A full-stack CI/CD pipeline project built with Jenkins, Docker, Ansible, and AWS
 **Avdhoot Kolekar**\
 DevOps Enthusiast | Cloud Learner | Automation Lover
 
+---
+
+## 🌱 Future Scope
+
+### 🌐 HTTPS + SSL with Nginx & Certbot
+
+- Use **Nginx** as a reverse proxy container
+- Integrate **Let's Encrypt (Certbot)** to provision free SSL certificates
+- Serve frontend securely over **HTTPS**
+
+### ☸️ Kubernetes Migration
+
+- Convert Docker Compose setup into **Kubernetes manifests**
+- Deploy using **Minikube (locally)** or **Amazon EKS (cloud)**
+- Use **Helm charts** for simplified deployments
+
+### 📦 Docker Image Versioning & Rollbacks
+
+- Implement version tagging like `v1`, `v2`, etc.
+- Add rollback mechanism in Jenkins pipeline in case of failure
+
+### 📈 Monitoring & Logging
+
+- Integrate **Prometheus + Grafana** for live monitoring
+- Use **ELK Stack** or **CloudWatch** for logs and observability
+
+---
+
+## 📝 Summary
+
+> Built an end-to-end CI/CD pipeline using Jenkins, Docker, and Ansible to deploy a full-stack ML app on AWS EC2.  
+Enabled seamless updates via GitHub push. Future enhancements include Nginx-based SSL termination and full Kubernetes orchestration.
+
+<!-- This future scope section nicely rounds off the project. Consider linking to resources or related repos if you want to guide readers further. -->
+

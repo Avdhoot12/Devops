@@ -1,117 +1,97 @@
-# DevOps Full-Stack ML Web App
+# DevOps CI/CD Pipeline with Monitoring & Automation
 
-## Overview
+## 📜 Description
 
-This project is a demonstration of a full-stack machine learning web application built with a focus on DevOps principles. It features a **React frontend** (using Vite) communicating with a **Flask backend** hosting a lightweight NLP sentiment analysis model powered by **TextBlob**.
+A full-stack CI/CD pipeline project built with Jenkins, Docker, Ansible, and AWS, integrated with Prometheus and Grafana for real-time monitoring and alerting. It automates infrastructure provisioning, application deployment, performance monitoring, and health checks using modern DevOps tools.
 
-The application provides real-time sentiment classification of user input text — showcasing the core skills of containerization, automation readiness, and continuous integration/deployment potential.
+## 🛠️ Tech Stack
 
----
+- **CI/CD**: Jenkins (without Jenkinsfile)
+- **Containerization**: Docker, Docker Compose
+- **Automation**: Ansible
+- **Cloud Infrastructure**: AWS EC2
+- **Monitoring**: Prometheus, Node Exporter, Grafana (manually installed)
+- **Version Control**: Git + GitHub
+- **Web Stack**: React (Frontend) + Flask (Backend)
 
-## Tech Stack
+## ⚙️ Features
 
-- **Frontend:** React (scaffolded with Vite for lightning-fast development)
-- **Backend:** Flask (Python) REST API
-- **ML Model:** Pre-trained sentiment analysis via TextBlob
-- **Communication:** HTTP REST API with JSON payloads
-- **Development Environment:** Local machine
+- ✅ Automated Linux server configuration with Ansible
+- ✅ Full CI/CD pipeline setup in Jenkins for every GitHub push
+- ✅ Dockerized frontend and backend services
+- ✅ Deployed multi-container application on AWS EC2
+- ✅ Real-time system metrics collection via Node Exporter
+- ✅ Grafana dashboards with Prometheus data source
+- ✅ Custom alert rules with email notifications
 
----
+## 🗂️ Project Structure
 
-## Project Structure
-
-project-root/
+```
+.
+├── ansible/
+│   └── playbooks, inventory
 ├── backend/
-│ ├── app.py
-│ ├── requirements.txt
-│ └── venv/ # Python virtual environment (excluded from git)
+│   └── Flask API
 ├── frontend/
-│ ├── src/
-│ │ └── App.jsx
-│ ├── package.json
-│ └── vite.config.js
-├── README.md
-└── ...
+│   └── React App
+├── docker-compose.yml
+├── prometheus/
+│   └── prometheus.yml, alerts.yml
+├── grafana/
+│   └── dashboards, provisioning
+└── README.md
+```
 
-yaml
-Copy
-Edit
+## 🚀 CI/CD Pipeline
 
----
+1. Developer pushes code to GitHub
+2. Jenkins triggers build automatically (no Jenkinsfile used, configured via UI)
+3. Ansible provisions remote server (if needed)
+4. Jenkins builds Docker images & pushes to DockerHub
+5. Docker Compose runs the app on AWS EC2
+6. Prometheus scrapes metrics from Node Exporter
+7. Grafana visualizes performance
+8. Alerts are triggered based on thresholds
 
-## Setup Instructions
+## 📊 Monitoring & Alerting
 
-### Backend Setup
+- Prometheus scrapes metrics from application & system targets.
+- Grafana displays Node Exporter dashboards.
+- Alerts set up for:
+  - High CPU/Memory/Disk usage
+  - Target down
+- Email notifications sent via SMTP (manually configured)
 
-1. Navigate to the `backend/` directory:
-    ```bash
-    cd backend
-    ```
-2. Create and activate a virtual environment:
-    - On **Windows (PowerShell):**
-      ```powershell
-      python -m venv venv
-      .\venv\Scripts\Activate.ps1
-      ```
-    - On **Linux/macOS:**
-      ```bash
-      python3 -m venv venv
-      source venv/bin/activate
-      ```
-3. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-4. Run the Flask server:
-    ```bash
-    python app.py
-    ```
-   The backend will be available at `http://localhost:5000`.
+## 🛡️ Security & Networking
 
----
+- Security groups configured for:
+  - Jenkins: 8080
+  - Prometheus: 9090
+  - Grafana: 3000
+  - Node Exporter: 9100
+- SSH access restricted to specific IPs
+- Application endpoints protected and containerized
 
-### Frontend Setup
+## 🧲 How to Run
 
-1. Navigate to the `frontend/` directory:
-    ```bash
-    cd frontend
-    ```
-2. Install dependencies:
-    ```bash
-    npm install
-    ```
-3. Start the development server:
-    ```bash
-    npm run dev
-    ```
-4. Access the frontend UI at `http://localhost:5173`.
+1. Clone the repo
+2. Set up AWS EC2 instances
+3. Configure Ansible inventory
+4. Run Ansible playbook
+5. Access Jenkins on `http://<JENKINS-IP>:8080`
+6. Trigger build (or wait for GitHub push)
+7. Monitor app with Prometheus and Grafana on the monitoring server
 
----
+## 📸 Screenshots
 
-## How It Works
+> Include:
 
-- The React frontend displays a textarea where users can input text.
-- On clicking the **Analyze** button, the input text is sent to the Flask backend via a POST request.
-- The Flask backend uses TextBlob to analyze the sentiment polarity.
-- It returns either `"Positive"` or `"Negative"` sentiment in JSON format.
-- The frontend displays the result dynamically on the page.
+- Jenkins Pipeline success
+- Grafana dashboard (Node Exporter)
+- Prometheus targets page
 
----
+## ✍️ Author
 
-## Next Steps (Planned)
+**Avdhoot Kolekar**\
+DevOps Enthusiast | Cloud Learner | Automation Lover
 
-- Dockerize frontend and backend applications for containerized deployment.
-- Implement Ansible playbooks for automated infrastructure setup.
-- Build CI/CD pipelines using Jenkins for automated testing and deployment.
-- Deploy the full stack on AWS EC2 instances with proper monitoring and scaling.
-- Set up HTTPS and domain routing with NGINX.
-
----
-
-## Contact
-
-For questions or collaboration, reach out at kolekaravdhoot231@gmail.com.
-
----
-
-*Built by Viking — forging DevOps skills, one container at a time.*

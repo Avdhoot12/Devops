@@ -22,10 +22,10 @@
         state: started
         enabled: true
 
-    # - name: Stop running containers (if any)
-    #   shell: docker-compose down || true
-    #   args:
-    #     chdir: /home/ubuntu/devops-ML-app
+    - name: Stop running containers (if any)
+      shell: docker-compose down || true
+      args:
+        chdir: /home/ubuntu/devops-ML-app
 
     - name: Remove all containers (running or stopped)
       shell: docker rm -f $(docker ps -aq) || true
@@ -71,6 +71,11 @@
       command: docker-compose build
       args:
         chdir: /home/ubuntu/devops-ML-app
+
+    # - name: Pull latest Docker images from Docker Hub
+    #   command: docker-compose pull
+    #   args:
+    #     chdir: /home/ubuntu/devops-ML-app
 
     - name: Run the app with Docker Compose
       command: docker-compose up -d

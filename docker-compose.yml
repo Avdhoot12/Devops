@@ -28,3 +28,32 @@ services:
 networks:
   app-network:
     driver: bridge
+
+
+
+# version: "3.8"
+
+# services:
+#   backend:
+#     image: vikin4/backend:latest
+#     container_name: sentiment-backend
+#     ports:
+#       - "5000:5000"
+#     environment:
+#       - FLASK_ENV=production
+#     networks:
+#       - app-network
+
+#   frontend:
+#     image: vikin4/frontend:latest
+#     container_name: sentiment-frontend
+#     ports:
+#       - "5173:80"
+#     depends_on:
+#       - backend
+#     networks:
+#       - app-network
+
+# networks:
+#   app-network:
+#     driver: bridge
